@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<style>
+  body {
+    font-family: sans-serif;
+    text-align: center;
+    padding: 60px;
+    background: #f5f5f5;
+  }
+  button {
+    padding: 15px 35px;
+    margin: 20px;
+    font-size: 22px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+  }
+  .out {
+    background: #e74c3c;
+    color: #fff;
+  }
+  .back {
+    background: #2ecc71;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+
+<h1>الإشعارات</h1>
+
+<button class="out" onclick="send('بطلع')">بطلع</button>
+<button class="back" onclick="send('رجعت')">رجعت</button>
+
+<script>
+const BOT_TOKEN = "8521992723:AAHyg6iek1_MQmkDD29WppwO7drBpzd8oOk";
+const CHAT_ID = "7921396090";
+
+function send(msg) {
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: `تم الضغط: ${msg}`
+        })
+    });
+}
+</script>
+
+</body>
+</html>
